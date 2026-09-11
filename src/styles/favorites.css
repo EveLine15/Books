@@ -1,0 +1,45 @@
+.favorites-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  gap: 24px;
+}
+
+.empty-favorites {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border-color);
+  margin-top: 20px;
+}
+
+.empty-title {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.empty-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.btn-remove:hover {
+  background-color: #fee2e2;
+}
+
+img {
+  width: 30px;
+  height: 30px;
+}

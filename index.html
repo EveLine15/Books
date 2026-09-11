@@ -1,13 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>books</title>
+    <title>BookTracker</title>
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/styles/catalog.css" />
+    <link rel="stylesheet" href="/src/styles/favorites.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <header class="app-header">
+      <div class="header-container">
+        <a href="#catalog" class="logo">
+          <img src="./src/assets/books-icon.svg" alt="icon" />
+          BookTracker
+        </a>
+
+        <button
+          class="burger-btn"
+          id="burger-btn"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+        >
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+
+        <nav class="nav-links" id="nav-links">
+          <a href="#catalog" class="nav-link" data-route="catalog">Каталог</a>
+          <a href="#favorites" class="nav-link" data-route="favorites"
+            >Избранное</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="outlet" class="app-main"></main>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 BookTracker. Все права защищены.</p>
+    </footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
