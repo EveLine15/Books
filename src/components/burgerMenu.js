@@ -1,3 +1,8 @@
+/**
+ * Toggles the burger menu open or closed.
+ * Updates aria-expanded attributes and manages background scroll locking.
+ * @returns {void}
+ */
 export function initBurgerMenu() {
   const burgerBtn = document.querySelector("#burger-btn");
   const navLinks = document.querySelector("#nav-links");

@@ -1,6 +1,16 @@
 import { goToPage } from "../utils/router";
 import { LIMIT_PER_PAGE } from "../utils/constants";
 
+/**
+ * Calculates the array of page numbers and ellipsis indicators for pagination controls.
+ *
+ * Generates a windowed range around the current page, always preserving the first
+ * and last page numbers, and inserting `"..."` strings for gaps larger than one page.
+ *
+ * @param {number} totalPages - The total number of available pages.
+ * @param {number} currentPage - The current active page number (1-indexed).
+ * @returns {Array<number|string>} An array containing page numbers and `"..."` placeholders.
+ */
 function getPaginationRange(totalPages, currentPage) {
   const delta = 1;
   const range = [];

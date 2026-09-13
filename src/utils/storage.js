@@ -56,9 +56,9 @@ export function removeFavorite(bookKey) {
 }
 
 /**
- * Переключить статус книги (добавить / удалить)
- * @param {Object} book - Объект книги
- * @returns {boolean} Новое состояние (true - добавлена, false - удалена)
+ * Toggle book's status in favorites list
+ * @param {Object} book - Book's object
+ * @returns {boolean} New state
  */
 export function toggleFavorite(book) {
   if (isFavorite(book.key)) {

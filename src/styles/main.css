@@ -5,7 +5,9 @@
   --text-muted: #737d77;
   --accent-primary: #78998a;
   --accent-secondary: #d98880;
-  --accent-light: #f3e9e3 --border-color: #ebdcd5;
+  --accent-light: #f3e9e3;
+  --border-color: #ebdcd5;
+  --favorites: #ef4444;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -13,6 +15,21 @@
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1d1b;
+  --card-bg: #242825;
+  --text-main: #e8ece9;
+  --text-muted: #9ba59f;
+  --accent-primary: #8aae9d;
+  --accent-secondary: #e09b93;
+  --accent-light: #2d3330;
+  --border-color: #363c38;
+  --favorites: #ef4444;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
 *,
@@ -34,6 +51,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .app-header {
@@ -52,6 +72,44 @@ body {
   align-items: center;
   justify-content: space-between;
   position: relative;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--accent-light);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+/* Переключение видимости иконок */
+.theme-icon {
+  display: none;
+}
+
+/* В светлой теме показываем луну, в тёмной — солнце */
+:root:not([data-theme="dark"]) .moon-icon,
+[data-theme="dark"] .sun-icon {
+  display: block;
 }
 
 .logo {

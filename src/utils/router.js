@@ -1,9 +1,10 @@
-import { renderCatalogPage } from "../pages/catalog.js";
-import { renderFavoritesPage } from "../pages/favorites.js";
-import { LIMIT_PER_PAGE } from "./constants.js";
+import { renderCatalogPage, updateCatalogPage } from "../pages/catalogPage.js";
+import { renderFavoritesPage } from "../pages/favoritesPage.js";
 
 const outlet = document.querySelector("#outlet");
 const navLinks = document.querySelectorAll(".nav-link");
+
+let currentRoutePath = null;
 
 export function getCatalogStateFromURL() {
   const hash = window.location.hash;
@@ -11,15 +12,21 @@ export function getCatalogStateFromURL() {
   const params = new URLSearchParams(queryString);
 
   return {
-    query: params.get("q") || "",
+    title: params.get("title") || "",
+    author: params.get("author") || "",
     page: parseInt(params.get("page"), 10) || 1,
   };
 }
 
 export function goToPage(newPage) {
-  const { query } = getCatalogStateFromURL();
-  const queryParam = query ? `q=${encodeURIComponent(query)}&` : "";
-  window.location.hash = `#catalog?${queryParam}page=${newPage}&limit=${LIMIT_PER_PAGE}`;
+  const { title, author } = getCatalogStateFromURL();
+  const params = new URLSearchParams();
+
+  if (title) params.set("title", title);
+  if (author) params.set("author", author);
+  params.set("page", newPage);
+
+  window.location.hash = `#catalog?${params.toString()}`;
 }
 
 const routes = {
@@ -28,17 +35,30 @@ const routes = {
 };
 
 function handleRoute() {
-  const hash = window.location.hash || "#catalog";
-  const renderPage = routes[hash] || renderCatalogPage;
+  const fullHash = window.location.hash || "#catalog";
+  const path = fullHash.split("?")[0];
+
+  if (path === currentRoutePath && path === "#catalog") {
+    updateCatalogPage();
+    updateActiveNavLinks(path);
+    return;
+  }
+
+  currentRoutePath = path;
+  const renderPage = routes[path] || renderCatalogPage;
 
   if (outlet) {
     outlet.innerHTML = "";
     renderPage(outlet);
   }
 
+  updateActiveNavLinks(path);
+}
+
+function updateActiveNavLinks(activePath) {
   navLinks.forEach((link) => {
-    const isCurrentRoute = link.getAttribute("href") === hash;
-    link.classList.toggle("active", isCurrentRoute);
+    const linkPath = link.getAttribute("href").split("?")[0];
+    link.classList.toggle("active", linkPath === activePath);
   });
 }
 
