@@ -25,13 +25,14 @@ Ensure you have [Node.js](https://nodejs.org/) (v18.0 or higher) and `npm` insta
 
    npm install
 
-   npm run dev
+   npm run build
    ```
 
 ---
 
 ## Project Structure
 
+```text
 ├── src/
 │ ├── assets/ # Static assets (SVG icons, graphics)
 │ │ ├── books-icon.svg
@@ -68,3 +69,4 @@ Ensure you have [Node.js](https://nodejs.org/) (v18.0 or higher) and `npm` insta
 ├── package.json # NPM dependencies and scripts
 ├── README.md # Project documentation
 └── vite.config.js # Vite configuration file
+```
