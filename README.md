@@ -25,7 +25,7 @@ Ensure you have [Node.js](https://nodejs.org/) (v18.0 or higher) and `npm` insta
 
    npm install
 
-   npm run dev
+   npm run build
    ```
 
 ---
