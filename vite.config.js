@@ -1,12 +1,10 @@
-import { resolve } from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  base: "./",
   build: {
-    rollupOptions: {
-      input: {
-        main: resolve(import.meta.dirname, "index.html"),
-      },
-    },
+    outDir: "dist",
+    assetsDir: "assets",
+    sourcemap: false,
   },
 });
